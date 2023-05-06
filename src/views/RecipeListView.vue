@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { ref, computed, toRef, toRefs } from 'vue'
+import { ref, computed, toRefs } from 'vue'
+import { useRouter } from 'vue-router'
 import { useRecipeStore } from '@/stores/recipe.store'
 import { Category } from '@/enums/category.enum'
 import { Tag } from '@/enums/tag.enum'
@@ -7,6 +8,7 @@ import { Tag } from '@/enums/tag.enum'
 const recipeStore = useRecipeStore()
 const { deleteRecipe } = recipeStore
 const { filteredRecipes, filter } = toRefs(recipeStore)
+const router = useRouter()
 
 const name = ref('')
 const category = ref<Category | ''>('')
@@ -26,6 +28,10 @@ const handleFilter = () => {
     category: category.value,
     tag: tag.value
   }
+}
+
+const handleRecipeClick = (id: number) => {
+  router.push(`/recipes/${id}`)
 }
 </script>
 
@@ -79,8 +85,12 @@ const handleFilter = () => {
         </tr>
       </thead>
       <tbody>
-        <tr v-for="recipe in filteredRecipes" :key="recipe.id">
-          <td>{{ recipe.name }}</td>
+        <tr
+          v-for="recipe in filteredRecipes"
+          :key="recipe.id"
+          @click="handleRecipeClick(recipe.id)"
+        >
+          <td class="name">{{ recipe.name }}</td>
           <td>
             <p class="description">{{ recipe.description }}</p>
           </td>
@@ -97,7 +107,6 @@ const handleFilter = () => {
 </template>
 
 <style scoped>
-
 .recipes-page .filters {
   display: flex;
   justify-content: space-between;
@@ -122,8 +131,6 @@ const handleFilter = () => {
   width: 200px;
 }
 
-
-
 .recipes-page {
   margin: 0 auto;
   max-width: 800px;
@@ -144,8 +151,16 @@ const handleFilter = () => {
   padding: 0.5rem;
 }
 
-.recipes-page table tbody tr:nth-child(odd) td {
+.recipes-page table tbody tr:nth-child(odd) {
   background: #f5f5f5;
+}
+
+.recipes-page table tbody tr {
+  cursor: pointer;
+}
+
+.recipes-page table tbody tr:hover {
+  background: #ffc793 !important;
 }
 
 .recipes-page table tbody tr td .description {
