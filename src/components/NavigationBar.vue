@@ -24,7 +24,7 @@ const userStore = useUserStore()
 
       <div class="nav-right">
         <ProfileDropdown v-if="userStore.isLoggedIn" />
-        <RouterLink v-if="!userStore.user" to="/login" class="nav-link">Login</RouterLink>
+        <RouterLink v-else to="/login" class="nav-link">Login</RouterLink>
       </div>
     </nav>
   </header>
