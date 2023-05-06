@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useUserStore } from '@/stores/user.store'
-import type { User } from '@/types/models/user.type'
+import type { User } from '@/types/user.type'
 
 const { user } = useUserStore() as { user: User }
 

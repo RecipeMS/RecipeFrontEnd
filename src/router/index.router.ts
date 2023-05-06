@@ -3,6 +3,8 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import LoginView from '../views/LoginView.vue'
 import ProfileViewVue from '@/views/ProfileView.vue'
+import RecipeListView from '@/views/RecipeListView.vue'
+import RecipeDetailsView from '@/views/RecipeDetailsView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,6 +28,16 @@ const router = createRouter({
       path: '/profile',
       name: 'profile',
       component: ProfileViewVue
+    },
+    {
+      path: '/recipes',
+      name: 'recipes',
+      component: RecipeListView
+    },
+    {
+      path: '/recipes/:id',
+      name: 'recipe-details',
+      component: RecipeDetailsView
     }
   ]
 })

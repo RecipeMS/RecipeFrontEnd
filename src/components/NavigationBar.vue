@@ -13,7 +13,7 @@ const userStore = useUserStore()
         <img
           alt="Recipe Box logo"
           class="header-logo"
-          src="@/assets/logo.png"
+          src="@/assets/images/logo.png"
           width="50"
           height="50"
         />

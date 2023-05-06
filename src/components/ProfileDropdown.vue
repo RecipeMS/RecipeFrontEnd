@@ -26,7 +26,7 @@ const handleLogout = () => {
 <template>
   <div class="dropdown">
     <button class="drop-btn" @click="toggleDropdown()">
-      <img alt="Profile" class="profile-image" src="@/assets/profile.png" width="50" height="50" />
+      <img alt="Profile" class="profile-image" src="@/assets/images/profile.png" width="50" height="50" />
     </button>
     <div class="dropdown-content" v-show="dropdownOpen">
       <RouterLink to="/profile" class="drop-item" @click="closeDropdown()">Profile</RouterLink>

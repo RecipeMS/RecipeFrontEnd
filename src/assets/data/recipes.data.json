@@ -4,7 +4,7 @@
     "name": "Pizza",
     "description": "Pizza is a flatbread generally topped with tomato sauce and cheese and baked in an oven. It is commonly topped with a selection of meats, vegetables and condiments.",
     "size": 1,
-    "category": ["Bread", "Meat", "Lunch"],
+    "categories": ["Bread", "Meat", "Lunch"],
     "tags": ["Spicy", "Hot", "Easy", "Unhealthy"],
     "ingredients": [
       {
@@ -44,7 +44,7 @@
     "name": "Burger",
     "description": "A hamburger is a sandwich consisting of one or more cooked patties of ground meat, usually beef, placed inside a sliced bread roll or bun.",
     "size": 1,
-    "category": ["Bread", "Meat", "Lunch"],
+    "categories": ["Bread", "Meat", "Lunch"],
     "tags": ["Hot", "Easy", "Unhealthy"],
     "ingredients": [
       {
@@ -84,7 +84,7 @@
     "name": "Pasta",
     "description": "Pasta is a staple food of traditional Italian cuisine, with the first reference dating to 1154 in Sicily.",
     "size": 4,
-    "category": ["Bread", "Pasta", "Dinner"],
+    "categories": ["Bread", "Pasta", "Dinner"],
     "tags": ["Vegan", "Hot", "Easy", "Healthy"],
     "ingredients": [
       {
@@ -124,7 +124,7 @@
     "name": "Salad",
     "description": "A salad is a dish consisting of a mixture of small pieces of food, usually vegetables or fruit.",
     "size": 2,
-    "category": ["Vegetable", "Lunch"],
+    "categories": ["Vegetable", "Lunch"],
     "tags": ["Vegan", "Vegetarian", "Healthy"],
     "ingredients": [
       {

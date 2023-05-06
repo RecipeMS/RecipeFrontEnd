@@ -1,38 +1,72 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { type Recipe } from '@/types/models/recipe.type'
-import { Category } from '@/enums/category.enum'
-import { Tag } from '@/enums/tag.enum'
+import tempData from '../assets/data/recipes.data.json'
+import { type Recipe } from '@/types/recipe.type'
+import { type Filter } from '@/types/filter.type'
 
 export const useRecipeStore = defineStore('recipe', () => {
   const recipes = ref<Recipe[]>([])
+
+  const test = ref(1)
+
+  const filter = ref<Filter>({
+    category: null,
+    tag: null,
+    name: null
+  })
+
+  const loadRecipes = async () => {
+    const response = await JSON.parse(JSON.stringify(tempData))
+    recipes.value = response
+
+    localStorage.setItem('recipes', JSON.stringify(recipes.value))
+  }
+
+  const destroyRecipes = () => {
+    recipes.value = []
+    localStorage.removeItem('recipes')
+  }
 
   const addRecipe = (newRecipe: Recipe) => {
     recipes.value.push(newRecipe)
     localStorage.setItem('recipes', JSON.stringify(recipes.value))
   }
 
-  const removeRecipe = (recipe: Recipe) => {
-    recipes.value.splice(recipes.value.indexOf(recipe), 1)
+  const deleteRecipe = (id: number) => {
+    recipes.value = recipes.value.filter((recipe) => recipe.id !== id)
     localStorage.setItem('recipes', JSON.stringify(recipes.value))
   }
 
-  const getRecipe = computed((id: number) => recipes.value.find((recipe) => recipe.id === id))
+  const getRecipeById = (id: number) => {
+    return recipes.value.find((recipe) => recipe.id === id)
+  }
 
-  const getRecipesByCategory = computed((category: Category) =>
-    recipes.value.filter((recipe) => recipe.categories.includes(category))
-  )
+  const filteredRecipes = computed(() => {
+    console.log(filter.value)
+    console.log(filteredRecipes.value)
 
-  const getRecipesByTag = computed((tag: Tag) =>
-    recipes.value.filter((recipe) => recipe.tags.includes(tag))
-  )
+    return recipes.value.filter((recipe) => {
+      const categoryFilter = filter.value.category
+        ? recipe.categories.includes(filter.value.category)
+        : true
+      const tagFilter = filter.value.tag ? recipe.tags.includes(filter.value.tag) : true
+      const nameFilter = filter.value.name
+        ? recipe.name.toLowerCase().includes(filter.value.name.toLowerCase())
+        : true
+
+      return categoryFilter && tagFilter && nameFilter
+    })
+  })
 
   return {
     recipes,
+    filter,
     addRecipe,
-    removeRecipe,
-    getRecipe,
-    getRecipesByCategory,
-    getRecipesByTag
+    deleteRecipe,
+    loadRecipes,
+    destroyRecipes,
+    getRecipeById,
+    filteredRecipes,
+    test
   }
 })

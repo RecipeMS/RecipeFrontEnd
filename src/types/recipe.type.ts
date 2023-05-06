@@ -1,5 +1,5 @@
-import { Category } from '../../enums/category.enum'
-import { Tag } from '../../enums/tag.enum'
+import { Category } from '../enums/category.enum'
+import { Tag } from '../enums/tag.enum'
 import type { Ingredient } from './ingredient.type'
 
 export type Recipe = {

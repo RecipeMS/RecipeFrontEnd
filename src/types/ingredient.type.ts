@@ -1,4 +1,4 @@
-import { Unit } from '../../enums/unit.enum'
+import { Unit } from '../enums/unit.enum'
 
 export type Ingredient = {
   id: number
