@@ -3,7 +3,7 @@ import { Tag } from '../../enums/tag.enum'
 import type { Ingredient } from './ingredient.type'
 
 export type Recipe = {
-  id: string
+  id: number
   name: string
   description: string
   size: number
