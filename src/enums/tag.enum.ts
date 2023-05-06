@@ -1,0 +1,23 @@
+export enum Tag {
+  SPICY = 'Spicy',
+  SWEET = 'Sweet',
+  SOUR = 'Sour',
+  SALTY = 'Salty',
+  BITTER = 'Bitter',
+  FRESH = 'Fresh',
+  FROZEN = 'Frozen',
+  HOT = 'Hot',
+  COLD = 'Cold',
+  WARM = 'Warm',
+  SLOW_COOK = 'Slow Cook',
+  QUICK = 'Quick',
+  EASY = 'Easy',
+  HARD = 'Hard',
+  HEALTHY = 'Healthy',
+  UNHEALTHY = 'Unhealthy',
+  VEGETARIAN = 'Vegetarian',
+  VEGAN = 'Vegan',
+  GLUTEN_FREE = 'Gluten Free',
+  DAIRY_FREE = 'Dairy Free',
+  NUT_FREE = 'Nut Free'
+}
