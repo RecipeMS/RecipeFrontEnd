@@ -7,7 +7,6 @@ export const useUserStore = defineStore('user', () => {
 
   const login = (newUser: User) => {
     localStorage.setItem('user', JSON.stringify(user))
-    alert('You are now logged in!')
     user.value = newUser
   }
 

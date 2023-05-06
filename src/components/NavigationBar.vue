@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import ProfileDropdown from './ProfileDropdown.vue'
 import { RouterLink } from 'vue-router'
-import { useUserStore } from '../stores/user'
+import { useUserStore } from '../stores/user.store'
 
 const userStore = useUserStore()
 </script>
@@ -11,7 +11,7 @@ const userStore = useUserStore()
     <nav>
       <RouterLink to="/">
         <img
-          alt="RecipeBox logo"
+          alt="Recipe Box logo"
           class="header-logo"
           src="@/assets/logo.png"
           width="50"

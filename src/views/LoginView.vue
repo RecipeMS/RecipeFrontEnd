@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useUserStore } from '@/stores/user'
+import { useUserStore } from '@/stores/user.store'
 import type { User } from '@/types/models/user.type'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
 
 const { login } = useUserStore()
 const username = ref('')
@@ -15,7 +18,9 @@ const handleSubmit = () => {
   }
 
   login(tempUser)
-  
+
+  // navigate to home page
+  router.push('/')
 }
 
 useUserStore
@@ -88,5 +93,4 @@ button {
 button:hover {
   background-color: #000;
 }
-
 </style>

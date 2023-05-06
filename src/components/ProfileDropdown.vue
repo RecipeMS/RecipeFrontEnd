@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
-import { useUserStore } from '../stores/user'
+import { RouterLink, useRouter } from 'vue-router'
+import { useUserStore } from '../stores/user.store'
 
 const userStore = useUserStore()
+const route = useRouter()
 
 const dropdownOpen = ref(false)
 
@@ -18,6 +19,7 @@ const closeDropdown = () => {
 const handleLogout = () => {
   userStore.logout()
   closeDropdown()
+  route.push('/login')
 }
 </script>
 
