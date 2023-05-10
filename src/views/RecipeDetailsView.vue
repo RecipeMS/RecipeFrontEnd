@@ -42,36 +42,64 @@ if (!recipe.value) {
 
 <style scoped>
 .recipe-details-page {
+  background-color: #FFF4E6;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  height: 100vh;
 }
 
 .recipe-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  background-color: #FFF;
+  border-radius: 20px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  padding: 40px;
+  text-align: center;
 }
 
 .recipe-details h1 {
-  margin-bottom: 1rem;
+  color: #FF6E4A;
+  font-size: 60px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
 }
 
 .recipe-details p {
-  margin: 0.5rem 0;
+  color: #777;
+  font-size: 24px;
+  line-height: 1.5;
+  margin-bottom: 10px;
 }
 
 .recipe-details strong {
-  margin-right: 0.5rem;
+  color: #FF6E4A;
+  font-weight: 700;
 }
 
 .ingredients {
   list-style: none;
-  padding: 0;
   margin: 0;
+  padding: 0;
+  text-align: left;
 }
 
 .ingredient {
-  margin: 0.5rem 0;
+  color: #777;
+  font-size: 24px;
+  line-height: 1.5;
+  margin-bottom: 10px;
 }
+
+.ingredient::before {
+  content: '\2022';
+  color: #FF6E4A;
+  font-size: 18px;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+
 </style>

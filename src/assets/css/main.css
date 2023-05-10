@@ -1,4 +1,23 @@
 @import './base.css';
 @import 'bootstrap/dist/css/bootstrap.css';
-#app {
+
+#app {}
+
+/* logoyu ilgili kod parçasıyla istenilen yere eklenebilir
+        <div class="logo">
+        <h1 > Recipe Box </h1>
+        <img
+          alt="Recipe Box logo"
+          class="header-logo"
+          src="@/assets/images/logo.png"
+          width="50"
+          height="50"
+         />
+        </div>  
+ */
+.logo {
+    display: flex;
+    color: rgb(237, 100, 32);
+    text-decoration: none !important;
+    padding: 2px;
 }

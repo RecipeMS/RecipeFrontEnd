@@ -27,7 +27,8 @@ useUserStore
 </script>
 
 <template>
-  <div class="login-page">
+  
+  <div class="login-page arkaplan">
     <div class="login-form">
       <h1>Login</h1>
       <form @submit.prevent="handleSubmit">
@@ -43,9 +44,17 @@ useUserStore
       </form>
     </div>
   </div>
+  
 </template>
 
 <style scoped>
+.arkaplan{
+  background-image: url('@/assets/images/loginback.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: 'Helvetica Neue', sans-serif;
+}
 .login-page {
   display: flex;
   justify-content: center;
@@ -54,43 +63,63 @@ useUserStore
 }
 
 .login-form {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  text-align: center;
   width: 400px;
-  padding: 2rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
 }
 
-.login-form h1 {
-  margin-bottom: 1rem;
+.login-form h2 {
+  color: #333;
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
 .form-control {
-  margin-bottom: 1rem;
+  margin-bottom: 20px;
+  text-align: left;
 }
 
 .form-control label {
+  color: #333;
   display: block;
-  margin-bottom: 0.5rem;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
 }
 
 .form-control input {
+  border: none;
+  border-bottom: 2px solid #712c2c;
+  color: #333;
+  font-size: 16px;
+  padding: 10px;
   width: 100%;
-  padding: 0.5rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  transition: border-color 0.3s ease-in-out;
 }
 
-button {
-  width: 100%;
-  padding: 0.5rem;
+.form-control input:focus {
+  border-color: rgb(237, 100, 32);
+  outline: none;
+}
+
+button[type="submit"] {
+  background-color: rgb(237, 100, 32);
   border: none;
-  border-radius: 5px;
-  background-color: #333;
+  border-radius: 30px;
   color: #fff;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 12px 36px;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease-in-out;
 }
 
-button:hover {
-  background-color: #000;
+button[type="submit"]:hover {
+  background-color: rgb(237, 100, 32);
 }
 </style>

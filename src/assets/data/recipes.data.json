@@ -158,5 +158,227 @@
         "unit": "Tablespoon"
       }
     ]
+  }, {
+    "id": 3,
+    "name": "Salad",
+    "description": "A salad is a dish consisting of a mixture of small pieces of food, usually vegetables or fruit.",
+    "size": 2,
+    "categories": ["Vegetable", "Lunch"],
+    "tags": ["Vegan", "Vegetarian", "Healthy"],
+    "ingredients": [
+      {
+        "id": 0,
+        "name": "Lettuce",
+        "quantity": 1,
+        "unit": "Count"
+      },
+      {
+        "id": 1,
+        "name": "Tomato",
+        "quantity": 1,
+        "unit": "Count"
+      },
+      {
+        "id": 2,
+        "name": "Onion",
+        "quantity": 0.5,
+        "unit": "Count"
+      },
+      {
+        "id": 3,
+        "name": "Garlic",
+        "quantity": 1,
+        "unit": "Count"
+      },
+      {
+        "id": 4,
+        "name": "Olive Oil",
+        "quantity": 1,
+        "unit": "Tablespoon"
+      }
+    ]
+  }, {
+    "id": 4,
+    "name": "Salad",
+    "description": "A salad is a dish consisting of a mixture of small pieces of food, usually vegetables or fruit.",
+    "size": 2,
+    "categories": ["Vegetable", "Lunch"],
+    "tags": ["Vegan", "Vegetarian", "Healthy"],
+    "ingredients": [
+      {
+        "id": 0,
+        "name": "Lettuce",
+        "quantity": 1,
+        "unit": "Count"
+      },
+      {
+        "id": 1,
+        "name": "Tomato",
+        "quantity": 1,
+        "unit": "Count"
+      },
+      {
+        "id": 2,
+        "name": "Onion",
+        "quantity": 0.5,
+        "unit": "Count"
+      },
+      {
+        "id": 3,
+        "name": "Garlic",
+        "quantity": 1,
+        "unit": "Count"
+      },
+      {
+        "id": 4,
+        "name": "Olive Oil",
+        "quantity": 1,
+        "unit": "Tablespoon"
+      }
+    ]
+  },{
+    "id": 5,
+    "name": "Spaghetti Bolognese",
+    "description": "Spaghetti Bolognese is a classic Italian dish made with spaghetti and a meaty tomato sauce.",
+    "size": 2,
+    "categories": ["Pasta", "Meat", "Dinner"],
+    "tags": ["Italian", "Comfort food", "Easy"],
+    "ingredients": [
+      {
+        "id": 0,
+        "name": "Spaghetti",
+        "quantity": 500,
+        "unit": "Gram"
+      },
+      {
+        "id": 1,
+        "name": "Ground Beef",
+        "quantity": 300,
+        "unit": "Gram"
+      },
+      {
+        "id": 2,
+        "name": "Tomato Paste",
+        "quantity": 2,
+        "unit": "Tablespoon"
+      },
+      {
+        "id": 3,
+        "name": "Tomato Sauce",
+        "quantity": 400,
+        "unit": "Milliliter"
+      },
+      {
+        "id": 4,
+        "name": "Onion",
+        "quantity": 1,
+        "unit": "Count"
+      },
+      {
+        "id": 5,
+        "name": "Garlic",
+        "quantity": 2,
+        "unit": "Clove"
+      },
+      {
+        "id": 6,
+        "name": "Olive Oil",
+        "quantity": 2,
+        "unit": "Tablespoon"
+      },
+      {
+        "id": 7,
+        "name": "Salt",
+        "quantity": 1,
+        "unit": "Teaspoon"
+      },
+      {
+        "id": 8,
+        "name": "Black Pepper",
+        "quantity": 1,
+        "unit": "Teaspoon"
+      }
+    ]
+  },{
+    "id": 6,
+    "name": "Chicken Curry",
+    "description": "A spicy Indian dish made with chicken, tomatoes, onions, and a variety of spices.",
+    "size": 2,
+    "categories": ["Indian", "Spicy", "Dinner"],
+    "tags": ["Curry", "Chicken", "Spices", "Healthy"],
+    "ingredients": [
+      {
+        "id": 0,
+        "name": "Chicken",
+        "quantity": 1,
+        "unit": "Kilogram"
+      },
+      {
+        "id": 1,
+        "name": "Tomatoes",
+        "quantity": 0.5,
+        "unit": "Kilogram"
+      },
+      {
+        "id": 2,
+        "name": "Onion",
+        "quantity": 2,
+        "unit": "Count"
+      },
+      {
+        "id": 3,
+        "name": "Garlic",
+        "quantity": 3,
+        "unit": "Cloves"
+      },
+      {
+        "id": 4,
+        "name": "Ginger",
+        "quantity": 2,
+        "unit": "Inch"
+      },
+      {
+        "id": 5,
+        "name": "Cumin",
+        "quantity": 1,
+        "unit": "Teaspoon"
+      },
+      {
+        "id": 6,
+        "name": "Coriander",
+        "quantity": 1,
+        "unit": "Teaspoon"
+      },
+      {
+        "id": 7,
+        "name": "Turmeric",
+        "quantity": 1,
+        "unit": "Teaspoon"
+      },
+      {
+        "id": 8,
+        "name": "Chili Powder",
+        "quantity": 1,
+        "unit": "Teaspoon"
+      },
+      {
+        "id": 9,
+        "name": "Salt",
+        "quantity": 1,
+        "unit": "Teaspoon"
+      },
+      {
+        "id": 10,
+        "name": "Coconut Milk",
+        "quantity": 1,
+        "unit": "Can"
+      },
+      {
+        "id": 11,
+        "name": "Lemon",
+        "quantity": 1,
+        "unit": "Count"
+      }
+    ]
   }
 ]

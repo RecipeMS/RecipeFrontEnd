@@ -28,47 +28,82 @@
       <li>Edit existing recipes</li>
       <li>Delete recipes</li>
     </ul>
+
+
+
+
+    
   </main>
 </template>
 
 <style scoped>
+
 main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f7f7f7;
+  color: #444;
+  margin: 50px;
 }
 
 h1 {
+  text-align: center;
+  margin-top: 50px;
   font-size: 3rem;
-  margin-bottom: 0;
+  color: #ff6600;
 }
 
+/* Slogan stilleri */
 .slogan {
-  font-size: 1.5rem;
-  margin-top: 0;
-  margin-bottom: 2rem;
+  text-align: center;
+  margin: 20px 0;
+  font-size: 1.2rem;
 }
 
+/* Vizyon ifadesi stilleri */
 .vision {
-  font-size: 1.25rem;
-  margin-top: 0;
-  margin-bottom: 2rem;
+  margin-top: 50px;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: #555;
+  
 }
 
+/* Özellik listesi stilleri */
 .feature-list {
-  list-style: none;
-  padding-left: 0;
-  margin-top: 0;
-  margin-bottom: 2rem;
+  margin-top: 50px;
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .feature-list li {
-  margin-bottom: 0.5rem;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 200px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.feature-list li::before {
-  content: '✓ ';
+.feature-list li:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.feature-list li h3 {
+  font-size: 1.2rem;
+  color: #ff6600;
+}
+
+.feature-list li p {
+  font-size: 0.9rem;
+  color: #777;
 }
 </style>
