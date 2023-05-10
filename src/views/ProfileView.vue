@@ -11,7 +11,7 @@ const { fullName, email, userType } = user
   <div class="profile-page">
     <h1>Profile</h1>
     <div class="profile-info">
-      <img alt="Profile picture" class="profile-picture" src="@/assets/profile.png" />
+      <img alt="Profile picture" class="profile-picture" src="@/assets/images/profile.png" />
       <p><strong>Name:</strong> {{ fullName }}</p>
       <p><strong>Email:</strong> {{ email }}</p>
       <p><strong>User Type:</strong> {{ userType }}</p>

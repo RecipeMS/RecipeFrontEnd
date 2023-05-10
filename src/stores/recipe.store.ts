@@ -1,8 +1,8 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import tempData from '../assets/data/recipes.data.json'
 import { type Recipe } from '@/types/recipe.type'
 import { type Filter } from '@/types/filter.type'
+import { getRecipes } from '@/api/recipes.api'
 
 export const useRecipeStore = defineStore('recipe', () => {
   const recipes = ref<Recipe[]>([])
@@ -16,9 +16,8 @@ export const useRecipeStore = defineStore('recipe', () => {
   })
 
   const loadRecipes = async () => {
-    const response = await JSON.parse(JSON.stringify(tempData))
+    const response = await getRecipes()
     recipes.value = response
-
     localStorage.setItem('recipes', JSON.stringify(recipes.value))
   }
 
@@ -42,9 +41,6 @@ export const useRecipeStore = defineStore('recipe', () => {
   }
 
   const filteredRecipes = computed(() => {
-    console.log(filter.value)
-    console.log(filteredRecipes.value)
-
     return recipes.value.filter((recipe) => {
       const categoryFilter = filter.value.category
         ? recipe.categories.includes(filter.value.category)
