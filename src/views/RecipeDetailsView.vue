@@ -33,7 +33,7 @@ if (!recipe.value) {
       <p><strong>Ingredients:</strong></p>
       <ul class="ingredients">
         <li v-for="ingredient in recipe.ingredients" :key="ingredient.id" class="ingredient">
-          {{ ingredient.quantity }} {{ ingredient.name }} {{ ingredient.unit }}
+          {{ ingredient.amount }} {{ ingredient.unit }} {{ ingredient.name }}
         </li>
       </ul>
     </div>

@@ -2,7 +2,7 @@ import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { type Recipe } from '@/types/recipe.type'
 import { type Filter } from '@/types/filter.type'
-import { getRecipes } from '@/api/recipes.api'
+import RecipeAPI from '@/api/recipes.api'
 
 export const useRecipeStore = defineStore('recipe', () => {
   const recipes = ref<Recipe[]>([])
@@ -16,24 +16,22 @@ export const useRecipeStore = defineStore('recipe', () => {
   })
 
   const loadRecipes = async () => {
-    const response = await getRecipes()
+    const response = await RecipeAPI.getRecipes()
+    console.log(response)
     recipes.value = response
     localStorage.setItem('recipes', JSON.stringify(recipes.value))
-  }
-
-  const destroyRecipes = () => {
-    recipes.value = []
-    localStorage.removeItem('recipes')
   }
 
   const addRecipe = (newRecipe: Recipe) => {
     recipes.value.push(newRecipe)
     localStorage.setItem('recipes', JSON.stringify(recipes.value))
+    RecipeAPI.createRecipe(newRecipe)
   }
 
   const deleteRecipe = (id: number) => {
     recipes.value = recipes.value.filter((recipe) => recipe.id !== id)
     localStorage.setItem('recipes', JSON.stringify(recipes.value))
+    RecipeAPI.deleteRecipe(id)
   }
 
   const getRecipeById = (id: number) => {
@@ -41,7 +39,7 @@ export const useRecipeStore = defineStore('recipe', () => {
   }
 
   const filteredRecipes = computed(() => {
-    return recipes.value.filter((recipe) => {
+    return recipes.value?.filter((recipe) => {
       const categoryFilter = filter.value.category
         ? recipe.categories.includes(filter.value.category)
         : true
@@ -60,7 +58,6 @@ export const useRecipeStore = defineStore('recipe', () => {
     addRecipe,
     deleteRecipe,
     loadRecipes,
-    destroyRecipes,
     getRecipeById,
     filteredRecipes,
     test
