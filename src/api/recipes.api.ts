@@ -21,7 +21,7 @@ class RecipeAPI {
   }
 
   public static async updateRecipe(id: number, updatedRecipe: Recipe) {
-    const response = await axios.patch(`${url}/${id}`, updatedRecipe)
+    const response = await axios.put(`${url}/${id}`, updatedRecipe)
     return response.data
   }
 

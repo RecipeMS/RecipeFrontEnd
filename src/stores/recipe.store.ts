@@ -48,6 +48,16 @@ export const useRecipeStore = defineStore('recipe', () => {
     })
   })
 
+  const updateRecipe = async (id: number, updatedRecipe: Recipe) => {
+    const index = recipes.value.findIndex((recipe) => recipe.id === id)
+
+    if (index !== -1) {
+      recipes.value[index] = updatedRecipe
+    }
+
+    await RecipeAPI.updateRecipe(id, updatedRecipe)
+  }
+
   return {
     recipes,
     filter,
@@ -55,6 +65,7 @@ export const useRecipeStore = defineStore('recipe', () => {
     deleteRecipe,
     loadRecipes,
     getRecipeById,
+    updateRecipe,
     filteredRecipes,
     test
   }

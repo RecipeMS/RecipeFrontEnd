@@ -6,6 +6,7 @@ import ProfileViewVue from '@/views/ProfileView.vue'
 import RecipeListView from '@/views/RecipeListView.vue'
 import RecipeDetailsView from '@/views/RecipeDetailsView.vue'
 import AddRecipeView from '@/views/AddRecipeView.vue'
+import UpdateRecipeViewVue from '@/views/UpdateRecipeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -44,8 +45,12 @@ const router = createRouter({
       path: '/add-recipe',
       name: 'add-recipe',
       component: AddRecipeView
+    },
+    {
+      path: '/update-recipe/:id',
+      name: 'update-recipe',
+      component: UpdateRecipeViewVue
     }
-    
   ]
 })
 

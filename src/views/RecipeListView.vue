@@ -33,28 +33,46 @@ const handleFilter = () => {
 const handleRecipeClick = (id: number) => {
   router.push(`/recipes/${id}`)
 }
+
+const handleUpdateRecipeClick = (id: number) => {
+  router.push(`/update-recipe/${id}`)
+}
+
+const handleDeleteRecipe = async (id: number) => {
+  await deleteRecipe(id)
+}
 </script>
 
 <template>
-  <div class="recipes-page  row">
-
-    
-
+  <Suspense>
+    <div class="recipes-page row">
       <div class="filters">
-        <div class="filter align-items-center "
-          style="background-color: rgb(237, 100, 32); border-bottom-left-radius:10px ; border-top-right-radius: 10px;">
-          <h3>find fast</h3>
+        <div
+          class="filter align-items-center"
+          style="border-bottom-left-radius: 10px; border-top-right-radius: 10px"
+        >
+          <h3>Find Fast</h3>
         </div>
 
-
-        <div class="filter align-items-center ">
+        <div class="filter align-items-center">
           <label for="name">Name</label>
-          <input type="text" id="name" v-model="name" @input="handleFilter" placeholder="Search by name" />
+          <input
+            type="text"
+            id="name"
+            v-model="name"
+            @input="handleFilter"
+            placeholder="Search by name"
+          />
         </div>
 
         <div class="filter align-items-center">
           <label for="category">Category</label>
-          <select id="category" v-model="category" @change="handleFilter" placeholder="Search by category">
+          <select
+            id="category"
+            v-model="category"
+            @change="handleFilter"
+            placeholder="Search by category"
+          >
             <option value="">All</option>
             <option v-for="option in categoryOptions" :key="option" :value="option">
               {{ option }}
@@ -70,30 +88,35 @@ const handleRecipeClick = (id: number) => {
               {{ option }}
             </option>
           </select>
-
         </div>
       </div>
-      <div style="margin-left:320px;">
+      <div style="margin-left: 320px">
         <table>
           <thead>
             <tr>
               <th>Name</th>
               <th>Description</th>
-              <th>Edit</th>
-              <th>Delete</th>
+              <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="recipe in filteredRecipes" :key="recipe.id" @click="handleRecipeClick(recipe.id)">
-              <td class="name">{{ recipe.name }}</td>
+            <tr v-for="recipe in filteredRecipes" :key="recipe.id">
+              <td class="name cursor" @click="handleRecipeClick(recipe.id!)">{{ recipe.name }}</td>
               <td>
-                <p class="description">{{ recipe.description }}</p>
+                <p class="description cursor">
+                  {{ recipe.description }}
+                </p>
               </td>
               <td>
-                <button class="btn btn-primary">  Edit</button>
+                <button class="btn btn-primary" @click="handleUpdateRecipeClick(recipe.id!)">
+                  Update
+                </button>
               </td>
               <td>
-                <button class="btn btn-danger" @click="deleteRecipe(recipe.id)">Delete</button>
+                <button class="btn btn-danger" @click="handleDeleteRecipe(recipe.id!)">
+                  Delete
+                </button>
               </td>
             </tr>
           </tbody>
@@ -101,24 +124,24 @@ const handleRecipeClick = (id: number) => {
       </div>
       <div class="animationpossition">
         <div id="cooking">
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div class="bubble"></div>
-  <div id="area">
-    <div id="sides">
-      <div id="pan"></div>
-      <div id="handle"></div>
-    </div>
-    <div id="pancake">
-      <div id="pastry"></div>
-    </div>
-  </div>
-</div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div id="area">
+            <div id="sides">
+              <div id="pan"></div>
+              <div id="handle"></div>
+            </div>
+            <div id="pancake">
+              <div id="pastry"></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  
+  </Suspense>
 </template>
 
 <style scoped>
@@ -135,8 +158,6 @@ const handleRecipeClick = (id: number) => {
 .recipes-page .filter {
   display: flex;
   flex-direction: column;
-
-
 }
 
 .recipes-page .filter label {
@@ -175,8 +196,9 @@ const handleRecipeClick = (id: number) => {
   background: #f5f5f5;
 }
 
-.recipes-page table tbody tr {
+.name {
   cursor: pointer;
+  background-color: #fff;
 }
 
 .recipes-page table tbody tr:hover {
@@ -194,7 +216,7 @@ const handleRecipeClick = (id: number) => {
   color: #000;
   text-decoration: none;
 }
-@import url("https://fonts.googleapis.com/css?family=Amatic+SC");
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC');
 body {
   background-color: #ffde6b;
   height: 100vh;
@@ -208,7 +230,7 @@ h1 {
   top: 25vh;
   width: 100vw;
   text-align: center;
-  font-family: "Amatic SC";
+  font-family: 'Amatic SC';
   font-size: 6vh;
   color: #333;
   opacity: 0.75;
@@ -356,7 +378,8 @@ h1 {
   5% {
     transform: rotate(-27deg);
   }
-  30%, 50% {
+  30%,
+  50% {
     transform: rotate(0deg);
   }
   55% {
@@ -430,10 +453,11 @@ h1 {
     opacity: 0.25;
   }
 }
-.animationpossition{
-  margin-left: 990px;
+.animationpossition {
+  margin-left: 800px;
   width: 100px;
   height: 100px;
   position: fixed;
+  z-index: -100;
 }
 </style>

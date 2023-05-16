@@ -64,4 +64,12 @@ nav {
 .nav-right {
   margin-left: auto;
 }
+
+.btn {
+  color: white;
+}
+
+.btn:hover {
+  color: white;
+}
 </style>

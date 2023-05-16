@@ -2,12 +2,6 @@
 import { ref } from 'vue'
 import { Unit } from '@/enums/unit.enum'
 
-const amount = ref(0)
-const unit = ref(Unit.GRAM)
-const name = ref('')
-
-const saved = ref(false)
-
 const props = defineProps({
   addIngredient: {
     type: Function,
@@ -16,8 +10,17 @@ const props = defineProps({
   tempId: {
     type: Number,
     required: true
+  },
+  ingredient: {
+    type: Object,
+    required: false
   }
 })
+
+const amount = ref(props.ingredient?.amount || 1)
+const unit = ref(props.ingredient?.unit || Unit.GRAM)
+const name = ref(props.ingredient?.name || '')
+const saved = ref(false)
 
 const unitOptions = Object.values(Unit)
 
@@ -42,7 +45,12 @@ const addIngredient = () => {
     </select>
     <input type="text" v-model="name" placeholder="Name of ingredient" :disabled="saved" />
 
-    <button type="button" class="delete-btn" :disabled="saved" @click="$emit('deleteIngredient', tempId)">
+    <button
+      type="button"
+      class="delete-btn"
+      :disabled="saved"
+      @click="$emit('deleteIngredient', tempId)"
+    >
       Delete
     </button>
     <button type="button" class="save-btn" @click="addIngredient" :disabled="saved">Save</button>

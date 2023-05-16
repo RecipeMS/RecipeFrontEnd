@@ -40,7 +40,6 @@
 
 main {
   font-family: 'Montserrat', sans-serif;
-  background-color: #f7f7f7;
   color: #444;
   margin: 50px;
 }
