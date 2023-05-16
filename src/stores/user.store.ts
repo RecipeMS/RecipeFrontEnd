@@ -6,7 +6,8 @@ export const useUserStore = defineStore('user', () => {
   const user = ref<User | null>(null)
 
   const login = (newUser: User) => {
-    localStorage.setItem('user', JSON.stringify(user))
+    console.log(newUser)
+    localStorage.setItem('user', JSON.stringify(newUser))
     user.value = newUser
   }
 

@@ -26,7 +26,6 @@ const tags = ref<Tag[]>([])
 const ingredients = ref(currentRecipe.value?.ingredients || [])
 
 const currentNumberOfIngredients = ref(currentRecipe.value?.ingredients.length || 1)
-console.log(currentRecipe.value?.ingredients.length)
 
 const categoryOptions = Object.values(Category)
 const tagOptions = Object.values(Tag)

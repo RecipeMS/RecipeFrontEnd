@@ -2,10 +2,14 @@
 import { ref, computed, toRefs } from 'vue'
 import { useRouter } from 'vue-router'
 import { useRecipeStore } from '@/stores/recipe.store'
+import { useUserStore } from '@/stores/user.store'
 import { Category } from '@/enums/category.enum'
 import { Tag } from '@/enums/tag.enum'
 
 const recipeStore = useRecipeStore()
+const userStore = useUserStore()
+const { user } = userStore
+const userType = user?.userType
 const { deleteRecipe } = recipeStore
 const { filteredRecipes, filter } = toRefs(recipeStore)
 const router = useRouter()
@@ -44,107 +48,121 @@ const handleDeleteRecipe = async (id: number) => {
 </script>
 
 <template>
-  <Suspense>
-    <div class="recipes-page row">
-      <div class="filters">
-        <div
-          class="filter align-items-center"
-          style="border-bottom-left-radius: 10px; border-top-right-radius: 10px"
+  <div class="recipes-page row">
+    <div class="filters">
+      <div
+        class="filter align-items-center"
+        style="border-bottom-left-radius: 10px; border-top-right-radius: 10px"
+      >
+        <h3>Find Fast</h3>
+      </div>
+
+      <div class="filter align-items-center">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          v-model="name"
+          @input="handleFilter"
+          placeholder="Search by name"
+        />
+      </div>
+
+      <div class="filter align-items-center">
+        <label for="category">Category</label>
+        <select
+          id="category"
+          v-model="category"
+          @change="handleFilter"
+          placeholder="Search by category"
         >
-          <h3>Find Fast</h3>
-        </div>
-
-        <div class="filter align-items-center">
-          <label for="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            v-model="name"
-            @input="handleFilter"
-            placeholder="Search by name"
-          />
-        </div>
-
-        <div class="filter align-items-center">
-          <label for="category">Category</label>
-          <select
-            id="category"
-            v-model="category"
-            @change="handleFilter"
-            placeholder="Search by category"
-          >
-            <option value="">All</option>
-            <option v-for="option in categoryOptions" :key="option" :value="option">
-              {{ option }}
-            </option>
-          </select>
-        </div>
-
-        <div class="filter align-items-center">
-          <label for="tag">Tag</label>
-          <select id="tag" v-model="tag" @change="handleFilter" placeholder="Search by tag">
-            <option value="">All</option>
-            <option v-for="option in tagOptions" :key="option" :value="option">
-              {{ option }}
-            </option>
-          </select>
-        </div>
+          <option value="">All</option>
+          <option v-for="option in categoryOptions" :key="option" :value="option">
+            {{ option }}
+          </option>
+        </select>
       </div>
-      <div style="margin-left: 320px">
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Description</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="recipe in filteredRecipes" :key="recipe.id">
-              <td class="name cursor" @click="handleRecipeClick(recipe.id!)">{{ recipe.name }}</td>
-              <td>
-                <p class="description cursor">
-                  {{ recipe.description }}
-                </p>
-              </td>
-              <td>
-                <button class="btn btn-primary" @click="handleUpdateRecipeClick(recipe.id!)">
-                  Update
-                </button>
-              </td>
-              <td>
-                <button class="btn btn-danger" @click="handleDeleteRecipe(recipe.id!)">
-                  Delete
-                </button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+
+      <div class="filter align-items-center">
+        <label for="tag">Tag</label>
+        <select id="tag" v-model="tag" @change="handleFilter" placeholder="Search by tag">
+          <option value="">All</option>
+          <option v-for="option in tagOptions" :key="option" :value="option">
+            {{ option }}
+          </option>
+        </select>
       </div>
-      <div class="animationpossition">
-        <div id="cooking">
-          <div class="bubble"></div>
-          <div class="bubble"></div>
-          <div class="bubble"></div>
-          <div class="bubble"></div>
-          <div class="bubble"></div>
-          <div id="area">
-            <div id="sides">
-              <div id="pan"></div>
-              <div id="handle"></div>
-            </div>
-            <div id="pancake">
-              <div id="pastry"></div>
-            </div>
+    </div>
+    <div style="margin-left: 320px">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="recipe in filteredRecipes" :key="recipe.id">
+            <td class="name cursor" @click="handleRecipeClick(recipe.id!)">{{ recipe.name }}</td>
+            <td>
+              <p class="description cursor">
+                {{ recipe.description }}
+              </p>
+            </td>
+            <td>
+              <button class="btn btn-primary" @click="handleUpdateRecipeClick(recipe.id!)" v-if="user">
+                Update
+              </button>
+            </td>
+            <td>
+              <button
+                class="btn btn-danger"
+                @click="handleDeleteRecipe(recipe.id!)"
+                v-if="userType === 'admin'"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button
+        @click="() => router.push('/add-recipe')"
+        class="btn btn-primary add-recipe-btn"
+        v-if="user"
+      >
+        Add new recipe
+      </button>
+    </div>
+    <div class="animationpossition">
+      <div id="cooking">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div id="area">
+          <div id="sides">
+            <div id="pan"></div>
+            <div id="handle"></div>
+          </div>
+          <div id="pancake">
+            <div id="pastry"></div>
           </div>
         </div>
       </div>
     </div>
-  </Suspense>
+  </div>
 </template>
 
 <style scoped>
+.add-recipe-btn {
+  margin: 20px;
+}
+
 .recipes-page .filters {
   padding-top: 60px;
   justify-content: space-between;

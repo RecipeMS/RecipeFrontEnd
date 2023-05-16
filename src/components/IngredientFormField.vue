@@ -44,15 +44,6 @@ const addIngredient = () => {
       </option>
     </select>
     <input type="text" v-model="name" placeholder="Name of ingredient" :disabled="saved" />
-
-    <button
-      type="button"
-      class="delete-btn"
-      :disabled="saved"
-      @click="$emit('deleteIngredient', tempId)"
-    >
-      Delete
-    </button>
     <button type="button" class="save-btn" @click="addIngredient" :disabled="saved">Save</button>
   </div>
 </template>

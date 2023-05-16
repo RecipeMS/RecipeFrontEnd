@@ -3,6 +3,8 @@ import { ref } from 'vue'
 import { useUserStore } from '@/stores/user.store'
 import type { User } from '@/types/user.type'
 import { useRouter } from 'vue-router'
+import { adminTemp as tempAdmin } from '@/assets/data/users'
+import { userTemp as tempRegular } from '@/assets/data/users'
 
 const router = useRouter()
 
@@ -12,23 +14,51 @@ const password = ref('')
 
 const handleSubmit = () => {
   const tempUser: User = {
-    id: 1,
-    fullName: 'Gökhan Göksel',
-    email: 'gciplak@eskisehir.edu.tr',
-    userType: 'admin'
+    id: password.value === 'admin' ? 2 : 1,
+    fullName: password.value === 'admin' ? 'Admin' : 'User',
+    email: username.value,
+    password: password.value,
+    userType: password.value === 'admin' ? 'admin' : 'user'
   }
 
-  login(tempUser)
+  if (password.value === 'admin') {
+    if (tempUser.email === tempAdmin.email && tempUser.password === tempAdmin.password) {
+      if (tempUser.userType === 'admin') {
+        localStorage.setItem('user', JSON.stringify(tempUser))
+      }
 
-  // navigate to home page
-  router.push('/')
+      login(tempUser)
+
+      // navigate to home page
+      router.push('/')
+    } else {
+      alert('Kullanıcı adı veya şifre hatalı')
+      return
+    }
+  } else if (password.value === 'user') {
+    if (tempUser.email === tempRegular.email && tempUser.password === tempRegular.password) {
+      if (tempUser.userType === 'admin') {
+        localStorage.setItem('user', JSON.stringify(tempUser))
+      }
+
+      login(tempUser)
+
+      // navigate to home page
+      router.push('/')
+    } else {
+      alert('Kullanıcı adı veya şifre hatalı')
+      return
+    }
+  } else {
+    alert('Kullanıcı adı veya şifre hatalı')
+    return
+  }
 }
 
 useUserStore
 </script>
 
 <template>
-  
   <div class="login-page arkaplan">
     <div class="login-form">
       <h1>Login</h1>
@@ -45,11 +75,10 @@ useUserStore
       </form>
     </div>
   </div>
-  
 </template>
 
 <style scoped>
-.arkaplan{
+.arkaplan {
   background-image: url('@/assets/images/loginback.jpg');
   background-size: cover;
   background-position: center;
@@ -107,7 +136,7 @@ useUserStore
   outline: none;
 }
 
-button[type="submit"] {
+button[type='submit'] {
   background-color: rgb(237, 100, 32);
   border: none;
   border-radius: 30px;
@@ -120,7 +149,7 @@ button[type="submit"] {
   transition: background-color 0.3s ease-in-out;
 }
 
-button[type="submit"]:hover {
+button[type='submit']:hover {
   background-color: rgb(237, 100, 32);
 }
 </style>
