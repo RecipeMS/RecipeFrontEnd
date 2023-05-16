@@ -8,7 +8,7 @@ import type { Ingredient } from '@/types/ingredient.type'
 import { Category } from '@/enums/category.enum'
 import { Tag } from '@/enums/tag.enum'
 
-const { addRecipe } = useRecipeStore()
+const { addRecipe, loadRecipes } = useRecipeStore()
 
 const router = useRouter()
 
@@ -38,6 +38,7 @@ const createRecipe = () => {
   console.log(recipe)
 
   addRecipe(recipe)
+  loadRecipes()
   router.push('/recipes')
 }
 
