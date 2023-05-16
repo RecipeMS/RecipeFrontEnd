@@ -17,20 +17,16 @@ export const useRecipeStore = defineStore('recipe', () => {
 
   const loadRecipes = async () => {
     const response = await RecipeAPI.getRecipes()
-    console.log(response)
     recipes.value = response
-    localStorage.setItem('recipes', JSON.stringify(recipes.value))
   }
 
   const addRecipe = (newRecipe: Recipe) => {
-    recipes.value.push(newRecipe)
-    localStorage.setItem('recipes', JSON.stringify(recipes.value))
+    console.log(newRecipe)
     RecipeAPI.createRecipe(newRecipe)
   }
 
   const deleteRecipe = (id: number) => {
     recipes.value = recipes.value.filter((recipe) => recipe.id !== id)
-    localStorage.setItem('recipes', JSON.stringify(recipes.value))
     RecipeAPI.deleteRecipe(id)
   }
 
