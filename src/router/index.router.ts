@@ -5,6 +5,7 @@ import LoginView from '../views/LoginView.vue'
 import ProfileViewVue from '@/views/ProfileView.vue'
 import RecipeListView from '@/views/RecipeListView.vue'
 import RecipeDetailsView from '@/views/RecipeDetailsView.vue'
+import AddRecipeView from '@/views/AddRecipeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -38,7 +39,13 @@ const router = createRouter({
       path: '/recipes/:id',
       name: 'recipe-details',
       component: RecipeDetailsView
+    },
+    {
+      path: '/add-recipe',
+      name: 'add-recipe',
+      component: AddRecipeView
     }
+    
   ]
 })
 

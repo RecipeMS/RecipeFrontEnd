@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useUserStore } from '@/stores/user.store'
-import type { User } from '@/types/models/user.type'
+import type { User } from '@/types/user.type'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
@@ -12,6 +12,7 @@ const password = ref('')
 
 const handleSubmit = () => {
   const tempUser: User = {
+    id: 1,
     fullName: 'Gökhan Göksel',
     email: 'gciplak@eskisehir.edu.tr',
     userType: 'admin'
