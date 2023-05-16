@@ -20,30 +20,64 @@ const { fullName, email, userType } = user
 </template>
 
 <style scoped>
+/* Genel stil */
 .profile-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
+  font-family: Arial, sans-serif;
 }
 
-.profile-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
+/* Profil resmi */
 .profile-picture {
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
-  margin-bottom: 1rem;
+  object-fit: cover;
+  margin-bottom: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.profile-info p {
-  margin: 0.5rem 0;
+/* Profil bilgileri */
+.profile-info {
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease;
 }
 
-.profile-info strong {
-  margin-right: 0.5rem;
+.profile-info:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
+
+/* Başlık */
+h1 {
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Etiketler */
+p {
+  margin-bottom: 10px;
+  color: #666;
+}
+
+strong {
+  font-weight: bold;
+}
+
+/* Arka plan */
+body {
+  background-color: #f9f9f9;
+}
+
+/* Kenar boşlukları */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
 </style>

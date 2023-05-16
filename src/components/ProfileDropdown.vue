@@ -55,7 +55,25 @@ const handleLogout = () => {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f5f5f5;
+  top: 100%;
+  right: 0;
+  background-color: #f27e1e;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+.dropdown-content button {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #f27e1e;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 10;
